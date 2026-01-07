@@ -76,7 +76,31 @@ docker run -p 3000:3000 \
 ### 3. Access the App
 The app will be available at [http://localhost:3000](http://localhost:3000).
 
-## 📖 How to Use
+## � Monitoring (Prometheus, Grafana, cAdvisor)
+
+You can monitor the application performance and resource usage using the integrated monitoring stack.
+
+### 1. Start the Stack
+```bash
+docker-compose up -d
+```
+
+### 2. Access the Dashboards
+- **EduTrack App**: [http://localhost:3000](http://localhost:3000)
+- **Prometheus**: [http://localhost:9090](http://localhost:9090) (Query data)
+- **Grafana**: [http://localhost:3001](http://localhost:3001) (Visualize metrics)
+  - Default Login: `admin` / `admin`
+- **cAdvisor**: [http://localhost:8080](http://localhost:8080) (Raw container metrics)
+
+### 3. Setup Grafana
+1. Log in to Grafana.
+2. Go to **Connections** > **Data Sources**.
+3. Add **Prometheus**.
+4. Set the URL to `http://prometheus:9090`.
+5. Save & Test.
+6. Import Dashboards (e.g., Docker Container metrics) to see the graphs.
+
+## �📖 How to Use
 
 1.  **Register**: Go to the Register page and create an account.
 2.  **Login**: Log in with your new credentials.
