@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: edutrack-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: edutrack-app
+  template:
+    metadata:
+      labels:
+        app: edutrack-app
+    spec:
+      containers:
+        - name: edutrack-app
+          image: edutrack-app:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 3000
+          env:
+            - name: MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: edutrack-secrets
+                  key: MONGODB_URI
+            - name: SESSION_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: edutrack-secrets
+                  key: SESSION_SECRET
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: edutrack-app-service
+spec:
+  selector:
+    app: edutrack-app
+  type: NodePort
+  ports:
+    - port: 3000
+      targetPort: 3000
+      nodePort: 30002
