@@ -1,0 +1,39 @@
+<div class="dashboard-header">
+    <h1>Student Dashboard</h1>
+    <a href="/students/add" class="add-btn">+ Add New Student</a>
+</div>
+
+<div class="student-grid">
+    <% if (students.length> 0) { %>
+        <% students.forEach(student=> { %>
+            <div class="student-card">
+                <div class="card-header">
+                    <h3>
+                        <%= student.name %>
+                    </h3>
+                    <span class="roll-no">Roll No: <%= student.rollNo %></span>
+                </div>
+                <div class="card-body">
+                    <p>Engineering Subjects Enrolled</p>
+                    <div class="subject-badges">
+                        <span class="badge">Mathematics</span>
+                        <span class="badge">Physics</span>
+                        <span class="badge">Chemistry</span>
+                        <span class="badge">Electronics</span>
+                        <span class="badge">Electrical</span>
+                        <span class="badge">Programming</span>
+                        <span class="badge">Mechanics</span>
+                        <span class="badge">Graphics</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="/students/edit/<%= student._id %>" class="edit-btn">Manage Marks</a>
+                </div>
+            </div>
+            <% }) %>
+                <% } else { %>
+                    <div class="empty-state">
+                        <p>No students found. Add your first student to get started!</p>
+                    </div>
+                    <% } %>
+</div>

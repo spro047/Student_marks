@@ -1,0 +1,154 @@
+<div class="edit-marks-container">
+    <div class="edit-header">
+        <div>
+            <h2>Manage Marks: <%= student.name %>
+            </h2>
+            <p>Roll No: <%= student.rollNo %>
+            </p>
+        </div>
+        <a href="/" class="back-link">← Back to Dashboard</a>
+    </div>
+
+    <form action="/students/edit/<%= student._id %>" method="POST" class="marks-form">
+        <div class="subjects-grid">
+            <!-- Mathematics -->
+            <div class="subject-card">
+                <h4>Engineering Mathematics</h4>
+                <div class="marks-inputs">
+                    <div class="input-group">
+                        <label>Internal 1</label>
+                        <input type="number" name="math_int1" value="<%= student.subjects.mathematics.internal1 %>"
+                            min="0" max="100">
+                    </div>
+                    <div class="input-group">
+                        <label>Internal 2</label>
+                        <input type="number" name="math_int2" value="<%= student.subjects.mathematics.internal2 %>"
+                            min="0" max="100">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Physics -->
+            <div class="subject-card">
+                <h4>Engineering Physics</h4>
+                <div class="marks-inputs">
+                    <div class="input-group">
+                        <label>Internal 1</label>
+                        <input type="number" name="phys_int1" value="<%= student.subjects.physics.internal1 %>" min="0"
+                            max="100">
+                    </div>
+                    <div class="input-group">
+                        <label>Internal 2</label>
+                        <input type="number" name="phys_int2" value="<%= student.subjects.physics.internal2 %>" min="0"
+                            max="100">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chemistry -->
+            <div class="subject-card">
+                <h4>Engineering Chemistry</h4>
+                <div class="marks-inputs">
+                    <div class="input-group">
+                        <label>Internal 1</label>
+                        <input type="number" name="chem_int1" value="<%= student.subjects.chemistry.internal1 %>"
+                            min="0" max="100">
+                    </div>
+                    <div class="input-group">
+                        <label>Internal 2</label>
+                        <input type="number" name="chem_int2" value="<%= student.subjects.chemistry.internal2 %>"
+                            min="0" max="100">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Basic Electronics -->
+            <div class="subject-card">
+                <h4>Basic Electronics</h4>
+                <div class="marks-inputs">
+                    <div class="input-group">
+                        <label>Internal 1</label>
+                        <input type="number" name="elec_int1" value="<%= student.subjects.electronics.internal1 %>"
+                            min="0" max="100">
+                    </div>
+                    <div class="input-group">
+                        <label>Internal 2</label>
+                        <input type="number" name="elec_int2" value="<%= student.subjects.electronics.internal2 %>"
+                            min="0" max="100">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Basic Electrical -->
+            <div class="subject-card">
+                <h4>Basic Electrical</h4>
+                <div class="marks-inputs">
+                    <div class="input-group">
+                        <label>Internal 1</label>
+                        <input type="number" name="ele_int1" value="<%= student.subjects.electrical.internal1 %>"
+                            min="0" max="100">
+                    </div>
+                    <div class="input-group">
+                        <label>Internal 2</label>
+                        <input type="number" name="ele_int2" value="<%= student.subjects.electrical.internal2 %>"
+                            min="0" max="100">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Computer Programming -->
+            <div class="subject-card">
+                <h4>Computer Programming</h4>
+                <div class="marks-inputs">
+                    <div class="input-group">
+                        <label>Internal 1</label>
+                        <input type="number" name="prog_int1" value="<%= student.subjects.programming.internal1 %>"
+                            min="0" max="100">
+                    </div>
+                    <div class="input-group">
+                        <label>Internal 2</label>
+                        <input type="number" name="prog_int2" value="<%= student.subjects.programming.internal2 %>"
+                            min="0" max="100">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Engineering Mechanics -->
+            <div class="subject-card">
+                <h4>Engineering Mechanics</h4>
+                <div class="marks-inputs">
+                    <div class="input-group">
+                        <label>Internal 1</label>
+                        <input type="number" name="mech_int1" value="<%= student.subjects.mechanics.internal1 %>"
+                            min="0" max="100">
+                    </div>
+                    <div class="input-group">
+                        <label>Internal 2</label>
+                        <input type="number" name="mech_int2" value="<%= student.subjects.mechanics.internal2 %>"
+                            min="0" max="100">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Engineering Graphics -->
+            <div class="subject-card">
+                <h4>Engineering Graphics</h4>
+                <div class="marks-inputs">
+                    <div class="input-group">
+                        <label>Internal 1</label>
+                        <input type="number" name="graph_int1" value="<%= student.subjects.graphics.internal1 %>"
+                            min="0" max="100">
+                    </div>
+                    <div class="input-group">
+                        <label>Internal 2</label>
+                        <input type="number" name="graph_int2" value="<%= student.subjects.graphics.internal2 %>"
+                            min="0" max="100">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="save-marks-btn">Update Marks</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> | Student Marks Management</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">EduTrack</a>
+            <div class="nav-links">
+                <% if (user) { %>
+                    <span>Welcome, <%= user.username %></span>
+                    <a href="/students/add">Add Student</a>
+                    <a href="/auth/logout" class="btn-logout">Logout</a>
+                <% } else { %>
+                    <a href="/auth/login">Login</a>
+                    <a href="/auth/register">Register</a>
+                <% } %>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        <%- body %>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2026 Student Marks Management System</p>
+    </footer>
+</body>
+</html>
