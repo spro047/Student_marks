@@ -55,6 +55,27 @@ npm start
 Open your web browser and go to:
 [http://localhost:3000](http://localhost:3000)
 
+## 🐳 Docker Execution
+
+If you have Docker installed, you can run the application as a container:
+
+### 1. Build the Image
+```bash
+docker build -t edutrack-app .
+```
+
+### 2. Run the Container
+Replace the placeholders with your actual MongoDB URI and a random session secret:
+```bash
+docker run -p 3000:3000 \
+  -e MONGODB_URI="your_mongodb_atlas_uri_here" \
+  -e SESSION_SECRET="your_random_secret" \
+  edutrack-app
+```
+
+### 3. Access the App
+The app will be available at [http://localhost:3000](http://localhost:3000).
+
 ## 📖 How to Use
 
 1.  **Register**: Go to the Register page and create an account.
