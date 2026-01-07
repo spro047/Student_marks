@@ -100,6 +100,56 @@ docker-compose up -d
 5. Save & Test.
 6. Import Dashboards (e.g., Docker Container metrics) to see the graphs.
 
+## ☸️ Kubernetes (Minikube) Deployment
+
+### Prerequisites
+You must have **Minikube** and **kubectl** installed.
+
+**Installation (Run in PowerShell as Admin):**
+```powershell
+winget install Kubernetes.minikube
+winget install Kubernetes.kubectl
+```
+*Restart your terminal after installation.*
+
+To deploy the entire monitoring stack and application on Kubernetes using Minikube:
+
+### 1. Build Image for Minikube
+Use the Minikube Docker daemon so Kubernetes can find your image:
+```bash
+eval $(minikube docker-env)
+docker build -t edutrack-app:latest .
+```
+
+### 2. Deploy Manifests
+Apply all the configuration files:
+```bash
+# Create namespace
+kubectl apply -f k8s/monitoring-namespace.yaml
+
+# Deploy Monitoring Configs
+kubectl apply -f k8s/prometheus-configmap.yaml
+kubectl apply -f k8s/prometheus-deployment.yaml
+kubectl apply -f k8s/grafana-deployment.yaml
+
+# Deploy Application
+kubectl apply -f k8s/app-secrets.yaml
+kubectl apply -f k8s/app-deployment.yaml
+```
+
+### 3. Access Services
+Minikube exposes services on different IP/Ports. Use these commands to open them:
+```bash
+# Open App
+minikube service edutrack-app-service
+
+# Open Prometheus (Monitoring Namespace)
+minikube service prometheus-service -n monitoring
+
+# Open Grafana (Monitoring Namespace)
+minikube service grafana -n monitoring
+```
+
 ## �📖 How to Use
 
 1.  **Register**: Go to the Register page and create an account.
