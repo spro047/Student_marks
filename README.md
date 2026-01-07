@@ -150,6 +150,38 @@ minikube service prometheus-service -n monitoring
 minikube service grafana -n monitoring
 ```
 
+### 4. Setup Grafana Dashboard
+1.  **Login**: Use `admin` / `admin` (skip password change if you want).
+2.  **Add Data Source**:
+    - Go to **Connections** > **Data Sources** > **+ Add new data source**.
+    - Select **Prometheus**.
+    - **Connection URL**: `http://prometheus-service.monitoring.svc.cluster.local:9090`
+    - Click **Save & test**.
+3.  **Import Dashboard**:
+    - Go to **Dashboards** > **New** > **Import**.
+    - Use ID **315** (for Node/Cluster metrics) or **6417** (for Pod metrics) to see graphs immediately.
+
+### 5. Prometheus Queries (Try these!)
+Go to the **Prometheus** tab (opened via `minikube service` command) and try these queries:
+
+1.  **Check Pod Status (Up/Down)**:
+    ```promql
+    up
+    ```
+    *Result: 1 = Running, 0 = Down*
+
+2.  **App Memory Usage (MB)**:
+    ```promql
+    container_memory_usage_bytes{container="edutrack-app"} / 1024 / 1024
+    ```
+    *Shows how much RAM your specific app container is using.*
+
+3.  **App CPU Usage Rate**:
+    ```promql
+    rate(container_cpu_usage_seconds_total{container="edutrack-app"}[5m])
+    ```
+    *Shows the CPU growth rate for your app over 5 minutes.*
+
 ## �📖 How to Use
 
 1.  **Register**: Go to the Register page and create an account.
